@@ -6,11 +6,12 @@ import java.util.List;
 @Entity
 public class Employee {
 
-    @Id
+    @Id @GeneratedValue
     private int employeeID;
     private String name;
     private int phoneNumber;
     private String email;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
@@ -19,11 +20,12 @@ public class Employee {
     private List<Service> service ;
 
 
-    public Employee(int employeeID, String name, int phoneNumber, String email, EmployeeType employeeType, List<Service> service) {
+    public Employee(int employeeID, String name, int phoneNumber, String email, String password, EmployeeType employeeType, List<Service> service ) {
         this.employeeID = employeeID;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.password = password;
         this.employeeType = employeeType;
         this.service = service;
     }
@@ -78,5 +80,13 @@ public class Employee {
 
     public void setService(List<Service> service) {
         this.service = service;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -40,6 +40,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springFramework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.3.9</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

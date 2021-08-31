@@ -1,14 +1,12 @@
 package com.traninig.project.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Service {
 
-    @Id
+    @Id @GeneratedValue
     private int serviceID;
     private Date startDate;
     private Date endDate;
@@ -16,9 +14,11 @@ public class Service {
     private boolean status;
 
     @ManyToOne
+    @JoinColumn(name = "car_id")
     private Car car;
 
     @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     public Service(int serviceID, Date startDate, Date endDate, String description, boolean status, Car car, Employee employee) {
@@ -67,7 +67,7 @@ public class Service {
         this.description = description;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

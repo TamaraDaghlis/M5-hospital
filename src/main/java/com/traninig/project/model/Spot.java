@@ -1,14 +1,12 @@
 package com.traninig.project.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Spot {
 
-    @Id
+    @Id @GeneratedValue
     private int spotID;
     private boolean status;
 

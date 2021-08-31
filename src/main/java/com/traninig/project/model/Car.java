@@ -1,17 +1,21 @@
 package com.traninig.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Car {
 
-
     @Id
+    @Column(nullable = false)
     private int plateNumber;
     private String carType;
 
     @ManyToOne
+    @JoinColumn (name = "customer_id")
     private Customer customer;
 
     @ManyToMany
@@ -29,6 +33,12 @@ public class Car {
     }
 
     public Car() {
+
+    }
+
+    public Car(int plateNumber, String carType) {
+        this.plateNumber = plateNumber;
+        this.carType = carType;
 
     }
 

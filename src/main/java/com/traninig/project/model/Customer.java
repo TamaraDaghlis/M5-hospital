@@ -1,30 +1,34 @@
 package com.traninig.project.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer {
 
-    @Id
-    private int customerID;
+    @Id @GeneratedValue
+    private int id;
+
     private String fullName;
     private String address;
     private String email;
+    private String password;
     private int phoneNumber;
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany (mappedBy = "customer")
     private List<Car> car ;
 
-    public Customer(int customerID, String fullName, String address, String email, int phoneNumber, List<Car> car) {
-        this.customerID = customerID;
+    public Customer(int id, String fullName, String address, String email,String password, int phoneNumber, List<Car> car) {
+        this.id = id;
         this.fullName = fullName;
         this.address = address;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.car = car;
     }
@@ -33,12 +37,12 @@ public class Customer {
 
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public int getId() {
+        return id;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -79,5 +83,13 @@ public class Customer {
 
     public void setCar(List<Car> car) {
         this.car = car;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
